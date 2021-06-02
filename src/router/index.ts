@@ -1,9 +1,10 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import Vue from 'vue';
+import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Money from '@/views/Money.vue';
 import Labels from '@/views/Labels.vue';
 import Statistics from '@/views/Statistics.vue';
+import EditLabel from '@/views/EditLabel.vue';
 import NotFound from '@/views/NotFound.vue';
 
 
@@ -25,6 +26,10 @@ const routes:Array<RouteConfig> = [
   {
     path:'/statistics',
     component:Statistics
+  },
+  {
+    path:'/labels/edit',
+    component:EditLabel
   },
   {
     path:'*',
