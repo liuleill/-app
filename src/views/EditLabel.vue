@@ -1,6 +1,9 @@
 <template>
     <Layout>
-        编辑标签
+        <div>
+            <Icon name="left"/>
+            <span>编辑标签</span>
+        </div>
     </Layout>
 </template>
 
@@ -26,5 +29,13 @@
 </script>
 
 <style lang="scss" scoped>
+     svg{
+            width:18px;
+            height:18px;
+            color:#666;
+            margin-right:16px;
+        }
+    span{
 
+    }
 </style>
