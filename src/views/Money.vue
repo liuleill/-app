@@ -1,6 +1,5 @@
 <template>
     <Layout class-prefix="layout">
-        {{record}}
         <NumberPad :value.sync="record.amount" @submit="saveRecord"/>        
         <Types :value.sync="record.type"/>
         <div class="notes">
@@ -26,14 +25,6 @@
     const recordList = recordListModel.fetch();
     const tagList = tagListModel.fetch();
     
-//     type RecordItem = {
-//     tags: string[]
-//     notes: string
-//     type: string
-//     amount: number // 数据类型 object | string
-//     createdAt?: Date  // 类 / 构造函数
-//   }
-
     @Component({
         components:{Tags,FormItem,Types,NumberPad}
     })
@@ -78,7 +69,7 @@
         display: flex;
         flex-direction: column-reverse;
     }
-    .notes{
+    .notes {
         padding: 12px 0;
     }
 </style>
