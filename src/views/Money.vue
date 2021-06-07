@@ -9,7 +9,7 @@
                     @update:value="onUpdateNotes"
             />
         </div>
-        <Tags :dataSource.sync="tags" @update:value="onUpdateTags"/>
+        <Tags/>
     </Layout>
 </template>
 
