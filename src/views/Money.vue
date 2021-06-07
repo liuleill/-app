@@ -1,5 +1,6 @@
 <template>
     <Layout class-prefix="layout">
+        {{record}}
         <NumberPad :value.sync="record.amount" @submit="saveRecord"/>        
         <Types :value.sync="record.type"/>
         <div class="notes">
@@ -19,13 +20,14 @@
     import FormItem from '@/components/money/FormItem.vue';
     import Tags from '@/components/money/Tags.vue';
     import {Component} from 'vue-property-decorator';
-   
+    import store from '@/store/index2.ts';
+
     @Component({
         components:{Tags,FormItem,Types,NumberPad}
     })
     export default class Money extends Vue {
-        tags = window.tagList;
-        recordList = window.recordList;
+        tags = store.tagList;
+        recordList = store.recordList;
         record:RecordItem = {
             tags:[],notes:'',type:'-',amount:0
         };
@@ -47,7 +49,7 @@
         }
 
         saveRecord(){
-          window.createRecord(this.record);
+          store.createRecord(this.record);
         }
     };
 </script>
