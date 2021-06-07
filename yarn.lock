@@ -10278,6 +10278,13 @@ traverse@^0.6.6:
   resolved "https://registry.npm.taobao.org/traverse/download/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
+tree@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.npm.taobao.org/tree/download/tree-0.1.3.tgz#14fba573d7853009c4ccef44f7409fac7162938f"
+  integrity sha1-FPulc9eFMAnEzO9E90CfrHFik48=
+  dependencies:
+    "0" underscore
+
 tryer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/tryer/download/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
@@ -10437,6 +10444,11 @@ unbox-primitive@^1.0.0:
     has-bigints "^1.0.1"
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
+
+underscore@:
+  version "1.13.1"
+  resolved "https://registry.npm.taobao.org/underscore/download/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha1-DBxr0t9UtrafIxQGbWW2zeb8+dE=
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
