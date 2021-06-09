@@ -71,5 +71,4 @@ export default class Labels extends mixins(TagHelper){
             margin-top:44-16px;
         }
 }
-
 </style>
