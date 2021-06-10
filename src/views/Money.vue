@@ -17,7 +17,6 @@
 <script lang="ts">
 import Vue from "vue";
 import NumberPad from "@/components/money/NumberPad.vue";
-import Types from "@/components/money/Types.vue";
 import FormItem from "@/components/money/FormItem.vue";
 import Tags from "@/components/money/Tags.vue";
 import { Component } from "vue-property-decorator";
@@ -25,7 +24,7 @@ import Tabs from "@/components/Tabs.vue";
 import recordTypeList from "@/constants/recordTypeList.ts";
 
 @Component({
-  components: { Tabs, Tags, FormItem, Types, NumberPad },
+  components: { Tabs, Tags, FormItem, NumberPad },
   computed: {
     recordList() {
       return this.$store.state.recordList;
