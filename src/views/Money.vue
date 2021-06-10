@@ -1,13 +1,12 @@
 <template>
   <Layout class-prefix="layout">
-    {{ record }}
     <NumberPad :value.sync="record.amount" @submit="saveRecord" />
-    <Types :data-source="recordTypeList" :value.sync="record.type" />
+    <Tabs :data-source="recordTypeList" :value.sync="record.type" />
     <div class="notes">
       <FormItem
-        fieldName="备注"
-        placeholder="在这里输入备注"
-        @update:value="onUpdateNotes"
+          fieldName="备注"
+          placeholder="在这里输入备注"
+          @update:value="onUpdateNotes"
       />
     </div>
     <Tags />
@@ -21,15 +20,10 @@ import FormItem from "@/components/money/FormItem.vue";
 import Tags from "@/components/money/Tags.vue";
 import { Component } from "vue-property-decorator";
 import Tabs from "@/components/Tabs.vue";
-import recordTypeList from "@/constants/recordTypeList.ts";
+import recordTypeList from "@/constants/recordTypeList";
 
 @Component({
   components: { Tabs, Tags, FormItem, NumberPad },
-  computed: {
-    recordList() {
-      return this.$store.state.recordList;
-    },
-  },
 })
 export default class Money extends Vue {
   get recordList() {
@@ -59,8 +53,8 @@ export default class Money extends Vue {
 }
 </script>
 
-<style lang="scss">
-.layout-content {
+<style  lang="scss" scoped>
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
