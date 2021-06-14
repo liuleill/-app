@@ -1,13 +1,8 @@
 <template>
   <Layout>
-    <Tabs
-      class-prefix="type"
-      :data-source="recordTypeList"
-      :value.sync="type"
-    />
-    ss
+    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
     <ol>
-       <li v-for="(group, index) in groupedList" :key="index">
+      <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
           <li v-for="item in group.items" :key="item.id"
@@ -20,28 +15,24 @@
         </ol>
       </li>
     </ol>
-    dd
   </Layout>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component } from "vue-property-decorator";
-import Tabs from "@/components/Tabs.vue";
-import recordTypeList from "@/constants/recordTypeList";
-import dayjs from 'dayjs';
-import clone from '@/lib/clone';
-
-
-@Component({
-  components: { Tabs },
-})
-export default class Statistics extends Vue {
-  tagString(tags: Tag[]) {
-    return tags.length === 0 ? "无" : tags.join(",");
-  }
-
-  beautify(string: string) {
+  import Vue from 'vue';
+  import {Component} from 'vue-property-decorator';
+  import Tabs from '@/components/Tabs.vue';
+  import recordTypeList from '@/constants/recordTypeList';
+  import dayjs from 'dayjs';
+  import clone from '@/lib/clone';
+  @Component({
+    components: {Tabs},
+  })
+  export default class Statistics extends Vue {
+    tagString(tags: Tag[]) {
+      return tags.length === 0 ? '无' : tags.join(',');
+    }
+    beautify(string: string) {
       const day = dayjs(string);
       const now = dayjs();
       if (day.isSame(now, 'day')) {
@@ -57,14 +48,13 @@ export default class Statistics extends Vue {
         return day.format('YYYY年M月D日');
       }
     }
-  get recordList() {
-    return (this.$store.state as RootState).recordList;
-  }
-  get groupedList() {
-    const { recordList } = this;
-    
-    if(recordList.length === 0){return []};
-         const newList = clone(recordList)
+    get recordList() {
+      return (this.$store.state as RootState).recordList;
+    }
+    get groupedList() {
+      const {recordList} = this;
+      if (recordList.length === 0) {return [];}
+      const newList = clone(recordList)
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
       type Result = { title: string, total?: number, items: RecordItem[] }[]
@@ -77,32 +67,30 @@ export default class Statistics extends Vue {
         } else {
           result.push({title: dayjs(current.createdAt).format('YYYY-MM-DD'), items: [current]});
         }
-    }
-
-     result.map(group => {
+      }
+      result.map(group => {
         group.total = group.items.reduce((sum, item) => {
+          console.log(sum);
+          console.log(item);
           return sum + item.amount;
         }, 0);
       });
       return result;
+    }
+    beforeCreate() {
+      this.$store.commit('fetchRecords');
+    }
+    type = '-';
+    recordTypeList = recordTypeList;
   }
-
-  beforeCreate() {
-    this.$store.commit("fetchRecords");
-  }
-
-  type = "-";
-  recordTypeList = recordTypeList;
-}
 </script>
-
 
 <style scoped lang="scss">
   ::v-deep {
     .type-tabs-item {
       background: #C4C4C4;
       &.selected {
-        background: #C4C4C4;
+        background: white;
         &::after {
           display: none;
         }
@@ -131,3 +119,4 @@ export default class Statistics extends Vue {
     margin-left: 16px;
     color: #999;
   }
+</style>

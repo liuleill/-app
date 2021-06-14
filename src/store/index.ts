@@ -57,7 +57,7 @@ const store = new Vuex.Store({
       state.recordList.push(record2);
       store.commit("saveRecords");
     },
-    saveRecord(state) {
+    saveRecords(state) {
       window.localStorage.setItem(
         "recordList",
         JSON.stringify(state.recordList)
